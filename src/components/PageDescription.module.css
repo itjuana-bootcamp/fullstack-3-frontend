@@ -1,0 +1,20 @@
+.PageDescription {
+  padding: 20px 0 40px 0;
+  text-align: center;
+}
+
+.PageDescription h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: #111;
+}
+
+.Divider {
+  height: 5px;
+  width: 50px;
+  background: #1976d2;
+  border-radius: 5px;
+  margin: 20px auto;
+}
