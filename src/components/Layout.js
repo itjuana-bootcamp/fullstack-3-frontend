@@ -9,6 +9,7 @@ export default function Layout({ children }) {
       <Header title="John Doe">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
+        <Link href="/projects">Projects</Link>
       </Header>
       <Container fixed>
         <main>{children}</main>
