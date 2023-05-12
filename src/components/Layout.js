@@ -10,6 +10,7 @@ export default function Layout({ children }) {
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
         <Link href="/projects">Projects</Link>
+        <Link href="/admin">Admin</Link>
       </Header>
       <Container fixed>
         <main>{children}</main>
