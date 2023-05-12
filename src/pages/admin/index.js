@@ -13,6 +13,13 @@ export default function AdminPage() {
     fetchProjects()
   }, [])
 
+  const handleOnSubmit = values => {
+    setProjects(prev => [
+      ...prev,
+      { ...values, _id: projects.length + 1 }
+    ])
+  }
+
   const fetchProjects = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/projects")
@@ -44,6 +51,7 @@ export default function AdminPage() {
       <AddNewProjectModal
         open={ isNewProjectModalVisible }
         onClose={ () => setIsNewProjectModalVisible(false) }
+        onSubmit={ handleOnSubmit }
       />
     </section>
   );

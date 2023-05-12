@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 
-export default function ProjectForm ({}) {
+export default function ProjectForm ({ onSubmit }) {
 
   const defaultValues = {
     name: "",
@@ -41,14 +41,21 @@ export default function ProjectForm ({}) {
     imageUrl: yup.string(),
   })
 
-  const { control } = useForm({
+  const { control, watch, reset, handleSubmit } = useForm({
     defaultValues,
     resolver: yupResolver(projectFormSchema),
     mode: 'all',
   })
 
+  const imageUrlValue = watch('imageUrl')
+
   return (
-    <form>
+    <form
+      id='project-form'
+      onReset={() => reset(defaultValues)}
+      onSubmit={handleSubmit(onSubmit)}
+      style={{ padding: '24px' }}
+    >
       <Grid container spacing={ 4 }>
         <Grid item xs={8}>
           <Controller
@@ -138,6 +145,32 @@ export default function ProjectForm ({}) {
             )}
           />
         </Grid>
+        <Grid item xs={12}>
+          <Controller
+            control={ control }
+            name='imageUrl'
+            render={ ({ field, fieldState }) => (
+              <TextField
+                { ...field }
+                label='Image URL'
+                variant='outlined'
+                fullWidth
+                error={ !!fieldState.error }
+                helperText={ fieldState.error?.message }
+              />
+            )}
+          />
+        </Grid>
+        {
+          imageUrlValue &&
+          <Grid item xs={12}>
+            <img
+              src={imageUrlValue}
+              alt='project-image'
+              style={{ width: '100%' }}
+            />
+          </Grid>
+        }
       </Grid>
     </form>
   )
