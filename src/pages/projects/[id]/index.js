@@ -3,6 +3,7 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import PageDescription from "@/components/PageDescription";
+import { getProject, getProjects } from "@/api/projects";
 
 function Project({ project }) {
   return (
@@ -45,7 +46,7 @@ function Project({ project }) {
         </Box>
         <h1>Project Overview</h1>
         <Box>
-          <span>{project.description}</span>
+          <span>{project.overview}</span>
         </Box>
         <h1>Tools Used</h1>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
@@ -65,8 +66,7 @@ function Project({ project }) {
 
 export async function getStaticPaths() {
   try {
-    const response = await fetch(`http://localhost:3000/api/projects/`);
-    const projects = await response.json();
+    const projects = await getProjects();
     const paths = projects.map((project) => {
       return { params: { id: project._id.toString() } };
     });
@@ -81,10 +81,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const response = await fetch(
-      `http://localhost:3000/api/projects/${params.id}`
-    );
-    const project = await response.json();
+    const project = await getProject(params.id)
 
     return {
       props: {

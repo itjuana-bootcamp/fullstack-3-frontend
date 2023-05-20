@@ -36,10 +36,10 @@ export default function ProjectForm ({ onSubmit, editValues }) {
 
   const projectFormSchema = yup.object().shape({
     name: yup.string().required('You need to add a name.'),
-    description: yup.string(),
-    overview: yup.string(),
-    tools: yup.array(),
-    imageUrl: yup.string(),
+    description: yup.string().required(),
+    overview: yup.string().required(),
+    tools: yup.array().required(),
+    imageUrl: yup.string().required(),
     projectLink: yup.string(),
   })
 
