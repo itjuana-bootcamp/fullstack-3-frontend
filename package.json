@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
+	"test:integ": "jest ",
     "e2e": "cypress open"
   },
   "dependencies": {
