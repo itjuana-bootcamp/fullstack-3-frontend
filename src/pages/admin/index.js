@@ -41,7 +41,7 @@ export default function AdminPage() {
       const projects = await getProjects();
       setProjects(projects);
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
   }
 
