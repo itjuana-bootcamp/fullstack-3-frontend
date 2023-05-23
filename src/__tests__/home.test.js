@@ -18,7 +18,7 @@ describe("Home page", () => {
   it("renders a summary with the portfolio owner summary", () => {
     render(<Home summary="Other value" />);
 
-    const summary = screen.getByText("My summary");
+    const summary = screen.getByText("Other value");
 
     expect(summary).toBeInTheDocument();
   });
