@@ -10,6 +10,7 @@ const Header = ({ src, title, children }) => {
           fontSize: "1.1rem",
           color: "black",
         }}
+      >
         {title}
       </Button>
       <Box
